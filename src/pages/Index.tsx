@@ -1,12 +1,13 @@
 import React from 'react';
 import '../styles/globals.css';
 import ParticleBackground from '../components/ParticleBackground';
-import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import StorySection from '../components/StorySection';
 import JourneyTimeline from '../components/JourneyTimeline';
 import HowItWorks from '../components/HowItWorks';
 import FeatureCards from '../components/FeatureCards';
+import EventsSection from '../components/EventsSection';
+import MUIDSection from '../components/MUIDSection';
 import Philosophy from '../components/Philosophy';
 import CallToAction from '../components/CallToAction';
 import Footer from '../components/Footer';
@@ -15,7 +16,6 @@ const Index: React.FC = () => {
   return (
     <div style={{ position: 'relative', minHeight: '100vh' }}>
       <ParticleBackground />
-      <Navbar />
       
       <main>
         <Hero />
@@ -86,6 +86,23 @@ const Index: React.FC = () => {
           subtitle="Discover the tools and communities that power your learning journey."
         >
           <FeatureCards />
+        </StorySection>
+
+        <StorySection
+          id="events"
+          title="Events @ CET"
+          subtitle="Hackathons, workshops, and learning sessions that shaped our community."
+          dark
+        >
+          <EventsSection />
+        </StorySection>
+
+        <StorySection
+          id="muid"
+          title="Your µLearn ID"
+          subtitle="Your digital identity — track progress, earn badges, and build your portfolio."
+        >
+          <MUIDSection />
         </StorySection>
 
         <StorySection
