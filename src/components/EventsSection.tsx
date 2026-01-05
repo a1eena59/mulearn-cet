@@ -1,99 +1,67 @@
 import React, { useRef, useEffect, useState } from 'react';
+import medhack from '../assets/events/medhack.jpeg';
+import mument from '../assets/events/mument.jpeg';
+import musprint from '../assets/events/musprint.jpeg';
+import beyondhack from '../assets/events/beyondhack.jpeg';
+import lc_ai from '../assets/events/lc_ai.jpeg';
+import lc_webdev from '../assets/events/lc_webdev.jpeg';
+import lc_stock from '../assets/events/lc_stock.jpeg';
+import talk1 from '../assets/events/talk1.jpeg';
+import talk2 from '../assets/events/talk2.jpeg';
+import talk3 from '../assets/events/talk3.jpeg';
+import hackathon from '../assets/events/hackathon.jpeg';
 
 interface Event {
   id: number;
-  title: string;
-  date: string;
-  type: string;
+  poster: string;
 }
 
 const events: Event[] = [
-  { id: 1, title: 'Hackathon 2024', date: 'Jan 2024', type: 'Hackathon' },
-  { id: 2, title: 'AI/ML Workshop', date: 'Feb 2024', type: 'Workshop' },
-  { id: 3, title: 'Web Dev Bootcamp', date: 'Mar 2024', type: 'Bootcamp' },
-  { id: 4, title: 'Cloud Computing Session', date: 'Apr 2024', type: 'Session' },
-  { id: 5, title: 'Open Source Day', date: 'May 2024', type: 'Event' },
-  { id: 6, title: 'Cyber Security Talk', date: 'Jun 2024', type: 'Talk' },
-  { id: 7, title: 'Flutter Fest', date: 'Jul 2024', type: 'Workshop' },
-  { id: 8, title: 'Design Sprint', date: 'Aug 2024', type: 'Sprint' },
+  { id: 1, poster: mument },
+  { id: 2, poster: musprint },
+  { id: 3, poster: beyondhack },
+  { id: 4, poster: lc_ai },
+  { id: 5, poster: lc_webdev },
+  { id: 6, poster: medhack },
+  { id: 7, poster: lc_stock },
+  { id: 8, poster: talk1 },
+  { id: 9, poster: talk2 },
+  { id: 10, poster: talk3 },
 ];
 
-const EventCard: React.FC<{ event: Event; index: number }> = ({ event, index }) => {
-  const colors = [
-    'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-    'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-    'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
-    'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-    'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
-    'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
-    'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)',
-  ];
-
+const EventCard: React.FC<{ event: Event }> = ({ event }) => {
   return (
     <div
       style={{
-        minWidth: '280px',
-        height: '380px',
-        background: colors[index % colors.length],
-        borderRadius: '20px',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'flex-end',
-        padding: '24px',
-        position: 'relative',
-        overflow: 'hidden',
+        minWidth: "280px",
+        height: "380px",
+        borderRadius: "20px",
+        overflow: "hidden",
+        position: "relative",
         flexShrink: 0,
+        boxShadow: "0 20px 40px rgba(0,0,0,0.35)",
       }}
     >
+      <img
+        src={event.poster}
+        alt="Event Poster"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          transition: "transform 0.6s ease",
+        }}
+      />
+
+      {/* subtle dark fade */}
       <div
         style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          fontSize: '80px',
-          opacity: 0.2,
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0))",
         }}
-      >
-        📸
-      </div>
-      <div
-        style={{
-          position: 'absolute',
-          top: '16px',
-          right: '16px',
-          background: 'rgba(0,0,0,0.3)',
-          padding: '6px 12px',
-          borderRadius: '20px',
-          fontSize: '12px',
-          color: 'white',
-          fontWeight: 600,
-        }}
-      >
-        {event.type}
-      </div>
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <h3
-          style={{
-            color: 'white',
-            fontSize: '20px',
-            fontWeight: 700,
-            marginBottom: '8px',
-            textShadow: '0 2px 10px rgba(0,0,0,0.3)',
-          }}
-        >
-          {event.title}
-        </h3>
-        <p
-          style={{
-            color: 'rgba(255,255,255,0.9)',
-            fontSize: '14px',
-          }}
-        >
-          {event.date}
-        </p>
-      </div>
+      />
     </div>
   );
 };
@@ -148,7 +116,7 @@ const EventsSection: React.FC = () => {
         }}
       >
         {duplicatedEvents.map((event, index) => (
-          <EventCard key={`${event.id}-${index}`} event={event} index={index} />
+          <EventCard key={`${event.id}-${index}`} event={event} />
         ))}
       </div>
       <div
